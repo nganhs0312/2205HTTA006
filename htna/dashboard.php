@@ -9,7 +9,6 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
-// Xóa công việc
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     $stmt = $conn->prepare("DELETE FROM tasks WHERE id = ? AND user_id = ?");
@@ -18,9 +17,8 @@ if (isset($_GET['delete'])) {
     exit();
 }
 
-// Xử lý lọc và sắp xếp
-$order_by = "due_date"; // mặc định sắp xếp theo hạn
-$order_dir = "ASC"; // ASC: hạn sớm lên trên, DESC: hạn xa lên trên
+$order_by = "due_date"; 
+$order_dir = "ASC"; 
 $status_filter = ""; 
 
 if (isset($_GET['sort'])) {
@@ -36,7 +34,6 @@ if (isset($_GET['status']) && in_array($_GET['status'], ['pending','in_progress'
     $status_filter = $_GET['status'];
 }
 
-// Lấy danh sách công việc
 $sql = "SELECT * FROM tasks WHERE user_id = ?";
 $params = [$user_id];
 
@@ -116,7 +113,6 @@ $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <a href="add_task.php" class="btn btn-primary btn-sm">+ Thêm công việc</a>
     </div>
 
-    <!-- Form lọc và sắp xếp -->
     <form method="GET" class="filter-sort">
         <div>
             <label>Sắp xếp theo:</label>
@@ -177,3 +173,4 @@ $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 </body>
 </html>
+
