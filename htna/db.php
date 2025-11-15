@@ -2,7 +2,7 @@
 $host = 'localhost';
 $dbname = 'abc123';
 $username = 'root';
-$password = ''; // XAMPP mặc định rỗng
+$password = ''; 
 
 try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
@@ -11,3 +11,4 @@ try {
     die("Lỗi kết nối CSDL: " . $e->getMessage());
 }
 ?>
+
