@@ -9,14 +9,13 @@ session_start();
 <!DOCTYPE html>
 <html lang='vi'>
 	<head>
-		<title>Test GET Session </title>
+		<title>Test Session </title>
 	</head>
 	<body>
 		<?php
-			if (isset($_SESSION['subject']))
-				echo "subject: " . $_SESSION['subject'] . "<br>";
-			if (isset($_SESSION['grade']))
-				echo "Grade: " . $_SESSION['grade'] . "<br>";
+			$_SESSION['subject'] = 'Ngôn ngữ lập trình PHP';
+			$_SESSION['grade'] = 10;
+			echo "Session variable are set. <br>";
 		?>
 		
 	</body>
